@@ -1,0 +1,1 @@
+<a href="{goToItem item=$recipe itemtype=recipes noimage=true}">{$recipe.title}</a>

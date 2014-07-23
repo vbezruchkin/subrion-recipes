@@ -1,4 +1,4 @@
 subrion-recipes
 ===============
 
-Recipes script for Subrion CMS
+Recipes sharing package for Subrion CMS.

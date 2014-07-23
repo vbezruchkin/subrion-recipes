@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<package name="recipes">
+	<title>Recipes</title>
+	<summary>This packages allows to create recipes collection website.</summary>
+	<author>Steven Terry</author>
+	<contributor>The LyreScript Team</contributor>
+	<version>3.0.0</version>
+	<date>2013-12-01</date>
+	<compatibility>3.0.3</compatibility>
+	<status>active</status>
+	<url>recipes</url>
+
+	<screenshots>
+		<screenshot type="preview" name="1.jpg">Admin panel</screenshot>
+		<screenshot name="1.jpg">Admin panel</screenshot>
+	</screenshots>
+
+	<packageitems>
+		<item url_fields="title_alias" pages="favorites,advsearch,view_account">recipecats</item>
+		<item url_fields="title_alias" pages="favorites,advsearch,view_account">recipes</item>
+		<item url_fields="title_alias" pages="favorites,advsearch,view_account">cookbooks</item>
+	</packageitems>
+	
+	<adminblocks>
+		<block name="recipes" url="home/recipes/">Recipes Software</block>
+	</adminblocks>
+
+	<adminpages>
+		<page block="recipes" menus="menu" url="home/recipes/" name="recipes_home" filename="index">Recipes Software</page>
+		
+		<page block="recipes" menus="menu" url="manage/recipecats/" name="manage_recipecats" filename="manage_recipecats">Manage Categories</page>
+		<page block="recipes" url="manage/recipecats/add/" name="add_recipecat" filename="manage_recipecats">Add Category</page>
+		<page block="recipes" url="manage/recipecats/edit/" name="edit_recipecat" filename="manage_recipecats">Edit Category</page>
+		
+		<page block="recipes" menus="menu" url="manage/cookbooks/" name="manage_cookbooks" filename="manage_cookbooks">Manage Cookbooks</page>
+		<page block="recipes" url="manage/cookbooks/add/" name="add_cookbook" filename="manage_cookbooks">Add Cookbook</page>
+		<page block="recipes" url="manage/cookbooks/edit/" name="edit_cookbook" filename="manage_cookbooks">Edit Cookbook</page>
+				
+		<page block="recipes" menus="menu" url="manage/recipes/" name="manage_recipes" filename="manage_recipes">Manage Recipes</page>
+		<page block="recipes" url="manage/recipes/add/" name="add_recipe" filename="manage_recipes">Add Recipe</page>
+		<page block="recipes" url="manage/recipes/edit/" name="edit_recipe" filename="manage_recipes">Edit Recipe</page>
+	</adminpages>
+	
+	<actions>
+		<action name="recipecat_view" url="manage/recipecats/" icon="view.png" order="1" show="" status="admin" pages="manage_recipecats,add_recipecat,edit_recipecat">View Categories</action>
+		<action name="recipecat_add" url="manage/recipecats/add/" icon="add.png" order="2" show="" status="admin" pages="manage_recipecats,add_recipecat,edit_recipecat">Add Category</action>
+		<action name="cookbook_view" url="manage/cookbooks/" icon="view.png" order="1" show="" status="admin" pages="manage_cookbooks,add_cookbook,edit_cookbook">View Cookbooks</action>
+		<action name="cookbook_add" url="manage/cookbooks/add/" icon="add.png" order="2" show="" status="admin" pages="manage_cookbooks,add_cookbook,edit_cookbook">Add Cookbook</action>
+		<action name="recipe_view" url="manage/recipes/" icon="view.png" order="1" show="" status="admin" pages="manage_recipes,add_recipe,edit_recipe">View Recipes</action>
+		<action name="recipe_add" url="manage/recipes/add/" icon="add.png" order="2" show="" status="admin" pages="manage_recipes,add_recipe,edit_recipe">Add Recipe</action>
+	</actions>
+	
+	<configgroup name="recipes">Recipes Configuration</configgroup>
+	
+	<config configgroup="recipes" name="recipes_package" type="divider" value="General">General Settings</config>
+	<config configgroup="recipes" name="recipes_auto_alias" multiple_values="1,0" type="radio" description="Transliterate Aliases">1</config>
+	<config configgroup="recipes" name="recipes_auto_approval" multiple_values="1,0" type="radio" description="Recipes Submission Auto Approval">1</config>
+	<config configgroup="recipes" name="recipes_per_page" type="text" description="Recipes Per Page">20</config>
+	<config configgroup="recipes" name="recipes_blocks" type="divider" value="General">Blocks Settings</config>
+	<config configgroup="recipes" name="recipes_per_block" type="text" description="Recipes Per Block">5</config>
+	<config configgroup="recipes" name="top_recipes_per_block" type="text" description="Top Recipes Per Block">5</config>
+	<config configgroup="recipes" name="new_recipes_per_block" type="text" description="New Recipes Per Block">5</config>
+	
+	<fields_groups>
+		<group item="recipecats" name="recipecats_general">General</group>
+		<group item="cookbooks" name="cookbooks_general">General</group>
+		<group item="recipes" name="recipes_general">General</group>
+	</fields_groups>
+	
+	<fields>
+		<field name="title" item="recipecats" title="Title" page="recipecats,recipecat_add,recipecat_edit,recipecat_view,favorites" group="recipecats_general" type="text" length="70" required="1" adminonly="0" required_checks="" searchable="1">Title</field>
+		<field name="description" item="recipecats" title="Description" page="recipecats,recipecat_add,recipecat_edit,recipecat_view,favorites" group="recipecats_general" type="textarea" editor="1" required="0" adminonly="0" length="" default="" searchable="1"><![CDATA[Category description]]></field>
+		<field name="meta_description" item="recipecats" title="Meta Description" page="recipecat_add,recipecat_edit" group="recipecats_general" type="textarea" editor="0" required="0" adminonly="1" length="" default=""><![CDATA[Meta description]]></field>
+		<field name="meta_keywords" item="recipecats" title="Meta Keywords" page="recipecat_add,recipecat_edit" group="recipecats_general" type="text" length="255" required="0" adminonly="1" required_checks=""><![CDATA[Meta keywords]]></field>
+
+		<field name="title" item="cookbooks" title="Title" page="my_cookbooks,cookbook_add,cookbook_edit,cookbook_view,favorites" group="cookbooks_general" type="text" length="70" required="1" adminonly="0" required_checks="" searchable="1">Title</field>
+		<field name="description" item="cookbooks" title="Description" page="my_cookbooks,cookbook_add,cookbook_edit,cookbook_view,favorites" group="cookbooks_general" type="textarea" editor="1" required="0" adminonly="0" length="" default="" searchable="1"><![CDATA[Cookbook description]]></field>
+
+		<field name="title" item="recipes" title="Title" page="recipes_home,my_recipes,recipe_add,recipe_edit,recipe_view,favorites,recipecat_view" group="recipes_general" type="text" length="70" required="1" adminonly="0" required_checks="" searchable="1">Title</field>
+		<field name="ingredients" item="recipes" title="Ingredients" page="recipe_add,recipe_edit,recipe_view" group="recipes_general" type="textarea" editor="1" required="0" adminonly="0" length="" default="" searchable="1"><![CDATA[Ingredients]]></field>
+		<field name="procedures" item="recipes" title="Procedures" page="recipe_add,recipe_edit,recipe_view" group="recipes_general" type="textarea" editor="1" required="0" adminonly="0" length="" default="" searchable="1"><![CDATA[Procedures]]></field>
+		<field name="notes" item="recipes" title="Notes" page="recipe_add,recipe_edit,recipe_view" group="recipes_general" type="textarea" editor="0" required="0" adminonly="0" length="" default=""><![CDATA[Notes]]></field>
+		<field name="meta_description" item="recipes" title="Meta Description" page="recipe_add,recipe_edit" group="recipes_general" type="textarea" editor="0" required="0" adminonly="1" length="" default=""><![CDATA[Meta description]]></field>
+		<field name="meta_keywords" item="recipes" title="Meta Keywords" page="recipe_add,recipe_edit" group="recipes_general" type="text" length="255" required="0" adminonly="1" required_checks=""><![CDATA[Meta keywords]]></field>
+	</fields>
+	
+	<pages>
+		<page status="active" readonly="1" uniqueurl="|PACKAGE|" name="recipes_home" menus="main"><![CDATA[Recipes]]></page>
+		
+		<page status="active" readonly="1" uniqueurl="|PACKAGE|mycookbooks/" name="my_cookbooks" filename="index" menus="account"><![CDATA[My Cookbooks]]></page>
+		<page status="active" readonly="1" uniqueurl="|PACKAGE|cookbook/add/" name="cookbook_add" filename="cookbookadd"><![CDATA[Add Cookbook]]></page>
+		<page status="active" readonly="1" uniqueurl="|PACKAGE|cookbook/edit/" name="cookbook_edit" filename="cookbookadd"><![CDATA[Edit Cookbook]]></page>
+		<page status="active" readonly="1" uniqueurl="|PACKAGE|cookbook/" name="cookbook_view" filename="cookbookview"><![CDATA[View Cookbook]]></page>
+		
+		<page status="active" readonly="1" uniqueurl="|PACKAGE|myrecipes/" name="my_recipes" filename="index" menus="account"><![CDATA[My Recipes]]></page>
+		<page status="active" readonly="1" uniqueurl="|PACKAGE|add/" name="recipe_add" filename="recipeadd" menus="main"><![CDATA[Add Recipe]]></page>
+		<page status="active" readonly="1" uniqueurl="|PACKAGE|edit/" name="recipe_edit" filename="recipeadd"><![CDATA[Edit Recipe]]></page>
+		<page status="active" readonly="1" uniqueurl="|PACKAGE|recipe/" name="recipe_view" filename="recipeview"><![CDATA[View Recipe]]></page>
+		
+		<page status="active" readonly="1" uniqueurl="|PACKAGE|categories/" name="recipecat_view" filename="recipecatview"><![CDATA[View Category]]></page>
+	</pages>
+
+	<phrases>
+		<phrase category="common" key="recipecat">Category</phrase>
+		<phrase category="common" key="recipecats">Categories</phrase>
+		<phrase category="common" key="cookbook">Cookbook</phrase>
+		<phrase category="common" key="cookbooks">Cookbooks</phrase>
+		<phrase category="common" key="recipe">Recipe</phrase>
+		<phrase category="common" key="recipes">Recipes</phrase>
+
+		<phrase category="admin" key="recipes_package">Recipes</phrase>
+		<phrase category="admin" key="recipes_copyright"><![CDATA[<a href="http://www.lyrescript.com/recipes/">Recipes Software</a>]]></phrase>
+		<phrase category="admin" key="manage_recipecats">Manage Categories</phrase>
+		<phrase category="admin" key="add_recipecat">Add Category</phrase>
+		<phrase category="admin" key="edit_recipecat">Edit Category</phrase>
+		<phrase category="admin" key="manage_cookbooks">Manage Cookbooks</phrase>
+		<phrase category="admin" key="add_cookbook">Add Cookbook</phrase>
+		<phrase category="admin" key="edit_cookbook">Edit Cookbook</phrase>
+		<phrase category="admin" key="manage_recipes">Manage Recipes</phrase>
+		<phrase category="admin" key="add_recipe">Add Recipe</phrase>
+		<phrase category="admin" key="edit_recipe">Edit Recipe</phrase>
+
+		<phrase category="admin" key="reset_recipecats">Reset Recipe Categories</phrase>
+		<phrase category="admin" key="reset_cookbooks">Reset Cookbooks</phrase>
+		<phrase category="admin" key="reset_recipes">Reset Recipes</phrase>
+		
+		<phrase category="admin" key="recipecats_not_added">Recipe categories have not been created.</phrase>
+		<phrase category="admin" key="cookbooks_not_added">Cookbooks have not been created.</phrase>
+		<phrase category="admin" key="recipecat_added">New recipe category has just been added.</phrase>
+		<phrase category="admin" key="cookbook_added">New cookbook has just been added.</phrase>
+		<phrase category="admin" key="recipe_added">New recipe has just been added.</phrase>
+				
+		<phrase category="admin" key="are_you_sure_to_delete_selected_recipecat">Are you sure you wish to delete the selected recipe category?</phrase>
+		<phrase category="admin" key="are_you_sure_to_delete_selected_recipecats">Are you sure you wish to delete the selected recipe categories?</phrase>
+		<phrase category="admin" key="are_you_sure_to_delete_selected_cookbook">Are you sure you wish to delete the selected cookbook?</phrase>
+		<phrase category="admin" key="are_you_sure_to_delete_selected_cookbooks">Are you sure you wish to delete the selected cookbooks?</phrase>
+		<phrase category="admin" key="are_you_sure_to_delete_selected_recipe">Are you sure you wish to delete the selected recipe?</phrase>
+		<phrase category="admin" key="are_you_sure_to_delete_selected_recipes">Are you sure you wish to delete the selected recipes?</phrase>
+		
+		<phrase category="frontend" key="recipes_package">Recipes</phrase>
+		<phrase category="frontend" key="new_recipes">New Recipes</phrase>
+		<phrase category="frontend" key="ingredients">Ingredients</phrase>
+		<phrase category="frontend" key="procedures">Procedures</phrase>
+		<phrase category="frontend" key="notes">Notes</phrase>
+		<phrase category="frontend" key="recipecats_not_added">Recipe categories have not been added.</phrase>
+		<phrase category="frontend" key="cookbooks_not_added">Cookbooks have not been added.</phrase>
+		<phrase category="frontend" key="recipes_not_added">Recipes have not been added.</phrase>
+		<phrase category="frontend" key="recipecat_recipes_not_added">No recipes have been submitted for this category.</phrase>
+		<phrase category="frontend" key="my_cookbooks_not_added">You have not submitted any cookbooks.</phrase>
+		<phrase category="frontend" key="my_recipes_not_added">You have not submitted any recipes.</phrase>
+		<phrase category="frontend" key="no_recipes"><![CDATA[Administrator has not added any recipes. <a href="{%URL%}">Click here</a> to be the first who adds recipe here.]]></phrase>		
+	</phrases>
+	
+	<blocks>
+		
+		<block name="new_recipes" title="New Recipes" position="bottom" type="smarty" showheader="0" pages="index" status="active">
+			<![CDATA[
+<h2>{lang key='new_recipes'}</h2>
+
+{if !empty($new_recipes)}
+	{foreach from=$new_recipes item=recipe}
+		{include file=$smarty.const.IA_HOME|cat:'packages/recipes/templates/common/brief/recipe.tpl'}
+	{/foreach}
+{else}
+	<div class="message alert">{lang key="no_recipes"}</div>
+{/if}
+			]]>
+		</block>
+
+		<block name="random_recipes" title="Random Recipes" position="right" type="smarty" showheader="1" sticky="1" status="active" collapsible="1">
+			<![CDATA[
+{if !empty($random_recipes)}
+	{foreach from=$random_recipes item=recipe name=random}
+		<div class="box_recipe"><a href="{goToItem itemtype=recipes item=$recipe noimage=true}">{$recipe.title}</a></div>
+	{if !$smarty.foreach.random.last}<hr />{/if}
+	{/foreach}
+{/if}
+			]]>
+		</block>
+		
+		<block name="latest_recipes" title="Latest Recipes" position="left" type="smarty" showheader="1" sticky="1" status="active" collapsible="1">
+			<![CDATA[
+{if !empty($latest_recipes)}
+	{foreach from=$latest_recipes item=recipe name=latest}
+		<div class="info"><img src="{$smarty.const.IA_TPL_URL}img/calendar.png" alt="" /> {$recipe.date_added|date_format:$config.date_format}</div>
+		<div class="box_recipe"><a href="{goToItem itemtype=recipes item=$recipe noimage=true}">{$recipe.title}</a></div>
+	{if !$smarty.foreach.latest.last}<hr />{/if}
+	{/foreach}
+{/if}
+			]]>
+		</block>
+		
+		<block name="popular_recipes" title="Popular Recipes" position="left" type="smarty" showheader="1" sticky="1" status="active" collapsible="1">
+			<![CDATA[
+{if !empty($popular_recipes)}
+	{foreach from=$popular_recipes item=recipe name=popular}
+		<div class="info"><img src="{$smarty.const.IA_TPL_URL}img/chart.png" alt="" /> {$recipe.views} {lang key="views"}</div>
+		<div class="box_recipe"><a href="{goToItem itemtype=recipes item=$recipe noimage=true}">{$recipe.title}</a></div>
+	{if !$smarty.foreach.popular.last}<hr />{/if}
+	{/foreach}
+{/if}
+			]]>
+		</block>
+
+		<block name="recipe_author" title="Recipe Author" showheader="1" collapsible="1" position="right" type="smarty" sticky="1" status="active"><![CDATA[
+{if isset($author) && $author}
+	<div style="float:left;margin:5px 10px 0 0">
+		{printImage imgfile=$author.avatar width=$config.thumb_w height=$config.thumb_h}
+	</div>
+	
+	<a href="{$smarty.const.IA_URL}{if !$smarty.const.IA_MOD_REWRITE}index.php?_p={/if}accounts/{$author.username}.html">{$author.fullname}</a>
+	<br />
+	<div>
+		<a href="javascript:;" onclick="$('#show_mail2owner').mail_form({ldelim}to:'{$author.email}'{rdelim});{rdelim}()" id="show_mail2owner">{$lang.contact_owner}</a>
+	</div>
+	<div style="clear:both"></div>
+	{ia_print_js files="jqModal"}
+	{ia_print_css files="jqModal"}
+{/if}
+		]]></block>
+		
+		<block name="browse_by_recipecats" title="Recipe Categories" showheader="1" collapsible="1" position="left" type="smarty" sticky="1" status="active">
+			<![CDATA[
+{if !empty($recipecats_list)}
+	{foreach from=$recipecats_list item=onerecipecat}
+		<p><a href="{goToItem itemtype='recipecats' item=$onerecipecat noimage=true}">{$onerecipecat.title}</a></p>
+	{/foreach}
+{else}
+	<p>{lang key="recipecats_not_added"}</p>
+{/if}
+			]]>
+		</block>
+	</blocks>
+
+	<hooks>
+		<hook name="phpCoreBeforePageDisplay" filename="packages/recipes/includes/common.inc.php"><![CDATA[]]></hook>
+		
+		<hook name="smartyItemTools">
+			<![CDATA[
+if ('recipe_view' == INTELLI_REALM)	
+{
+	$iaCore = iaCore::instance();
+	$estate = isset($iaCore->estate) ? $iaCore->estate : array(); 
+				
+	if (!empty($_SESSION['user']) && $estate['account_id'] == $_SESSION['user']['id'])
+	{
+		$url = (IA_MOD_REWRITE ? '' : 'index.php?_p=') . IA_URL . '/realty/submit/?id='.$estate['id'];
+		$iaCore->iaItemTools[] = array('title' => _t('estate_edit'), 'url' => $url, 'html' => false);
+	}
+}
+			]]>
+		</hook>
+		
+		<hook name="phpAdminDatabaseBeforeAll" type="php">
+			<![CDATA[
+$reset_options['recipecats'] = _t('reset_recipecats');
+$reset_options['cookbooks'] = _t('reset_cookbooks');
+$reset_options['recipes'] = _t('reset_recipes');
+			]]>
+		</hook>
+		
+		<hook name="phpDbManageBeforeReset">
+			<![CDATA[
+$iaDBManage = $iaCore->factory('admin', 'dbmanage');
+
+if (in_array($option, array('recipecats', 'cookbooks', 'recipes')))
+{
+	$iaDBManage->_truncate_table($option);
+}
+			]]>
+		</hook>
+	</hooks>
+
+	<install>
+		<sql>
+			<![CDATA[
+CREATE TABLE `{prefix}recipecats` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT ,
+	`account_id` INT(11) NOT NULL ,
+	`title_alias` VARCHAR(255) NOT NULL ,
+	`title` VARCHAR(255) NOT NULL ,
+	`description` TEXT NOT NULL ,
+	`meta_description` TEXT NOT NULL ,
+	`meta_keywords` VARCHAR(255) NOT NULL ,
+	`status` enum('inactive', 'active') NOT NULL default 'inactive',
+	`date_added` datetime NOT NULL default '0000-00-00 00:00:00',
+	`date_modified` datetime NOT NULL default '0000-00-00 00:00:00',
+	`views` int(11) unsigned NOT NULL default '0',
+	`locked` tinyint(1) NOT NULL default '0',
+	PRIMARY KEY ( `id` )
+) {mysql_version} AUTO_INCREMENT=1;
+			]]>
+		</sql>
+		<sql>
+			<![CDATA[
+CREATE TABLE `{prefix}cookbooks` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT ,
+	`account_id` INT(11) NOT NULL ,
+	`title_alias` VARCHAR(255) NOT NULL ,
+	`title` VARCHAR(255) NOT NULL ,
+	`description` TEXT NOT NULL ,
+	`status` enum('inactive', 'active') NOT NULL default 'inactive',
+	`date_added` datetime NOT NULL default '0000-00-00 00:00:00',
+	`date_modified` datetime NOT NULL default '0000-00-00 00:00:00',
+	`views` int(11) unsigned NOT NULL default '0',
+	PRIMARY KEY ( `id` )
+) {mysql_version} AUTO_INCREMENT=1;
+			]]>
+		</sql>
+		<sql>
+			<![CDATA[
+CREATE TABLE `{prefix}recipes` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT ,
+	`account_id` INT(11) NOT NULL ,
+	`recipecats` VARCHAR(255) NOT NULL ,
+	`id_cookbook` INT(11) NOT NULL ,
+	`category_alias` VARCHAR(255) NOT NULL ,
+	`cookbook_alias` VARCHAR(255) NOT NULL ,
+	`title_alias` VARCHAR(255) NOT NULL ,
+	`title` VARCHAR(255) NOT NULL ,
+	`ingredients` TEXT NOT NULL ,
+	`procedures` TEXT NOT NULL ,
+	`notes` TEXT NOT NULL ,
+	`meta_description` TEXT NOT NULL ,
+	`meta_keywords` VARCHAR(255) NOT NULL ,
+	`status` enum('inactive', 'active') NOT NULL default 'inactive',
+	`date_added` datetime NOT NULL default '0000-00-00 00:00:00',
+	`date_modified` datetime NOT NULL default '0000-00-00 00:00:00',
+	`views` int(11) unsigned NOT NULL default '0',
+	PRIMARY KEY ( `id` ),
+	FULLTEXT KEY `search` (`title`,`ingredients`,`procedures`)
+) {mysql_version} AUTO_INCREMENT=1;
+			]]>
+		</sql>
+	</install>
+
+	<uninstall>
+		<sql>
+			<![CDATA[
+DROP TABLE IF EXISTS `{prefix}recipecats`;
+			]]>
+		</sql>
+		<sql>
+			<![CDATA[
+DROP TABLE IF EXISTS `{prefix}cookbooks`;
+			]]>
+		</sql>
+		<sql>
+			<![CDATA[
+DROP TABLE IF EXISTS `{prefix}recipes`;
+			]]>
+		</sql>
+	</uninstall>
+</package>
