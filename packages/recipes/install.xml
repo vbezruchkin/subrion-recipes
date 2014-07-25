@@ -2,11 +2,11 @@
 <package name="recipes">
 	<title>Recipes</title>
 	<summary>This packages allows to create recipes collection website.</summary>
-	<author>Steven Terry</author>
-	<contributor>The LyreScript Team</contributor>
-	<version>3.0.0</version>
-	<date>2013-12-01</date>
-	<compatibility>3.0.3</compatibility>
+	<author>Vasily Bezruchkin</author>
+	<contributor>Intelliants LLC</contributor>
+	<version>3.2.0</version>
+	<date>2014-07-25</date>
+	<compatibility>3.2.0</compatibility>
 	<status>active</status>
 	<url>recipes</url>
 
